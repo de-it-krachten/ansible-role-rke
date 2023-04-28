@@ -77,7 +77,8 @@
     - name: Download binary
       ansible.builtin.get_url:
         url: "{{ rke_url }}"
-        dest: "{{ __tmpdir.path }}/"
+        dest: "{{ __tmpdir.path }}/{{ rke_file }}"
+        mode: "0644"
       changed_when: false
 
     - name: Copy binary to {{ rke_path }}
