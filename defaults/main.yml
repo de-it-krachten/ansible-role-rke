@@ -18,6 +18,9 @@ rke:
     Linux: linux
     Darwin: darwin
 
+# Construct filename based on the system & architecture
+rke_file: "rke_{{ rke_system }}-{{ rke_architecture }}"
+
 # Version of the CLI to install
 rke_version: latest
 

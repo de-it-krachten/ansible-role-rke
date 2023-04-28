@@ -47,10 +47,6 @@
   vars:
     query: "[?tag_name=='{{ rke_version }}']"
 
-- name: Construct filename based on the system & architecture
-  ansible.builtin.set_fact:
-    rke_file: "rke_{{ rke_system }}-{{ rke_architecture }}"
-
 - name: Show rke release
   ansible.builtin.debug:
     msg:
