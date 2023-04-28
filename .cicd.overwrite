@@ -1,0 +1,15 @@
+---
+
+# Generic
+generic:
+  role: ansible-role-rke
+  role_short: rke
+  role_description: |
+    Installs Rancher Kubernetes Engine (RKE)<br>
+    https://www.rancher.com/products/rke<br>
+  collections: []
+
+# Molecule
+molecule:
+  requirements:
+    roles_extra: []
