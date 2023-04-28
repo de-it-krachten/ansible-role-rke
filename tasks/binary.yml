@@ -1,0 +1,95 @@
+---
+
+- name: Lookup alternative system & architecture
+  ansible.builtin.set_fact:
+    rke_system: "{{ rke['system'][ansible_system] }}"
+    rke_architecture: "{{ rke['architecture'][ansible_architecture] | default(ansible_architecture) }}"
+
+- name: Get rke version installed
+  ansible.builtin.shell: |
+    set -o pipefail
+    rke --version | awk '{print $NF}'
+  args:
+    executable: /bin/bash
+  changed_when: no
+  failed_when: no
+  check_mode: no
+  register: rke_version_installed
+
+- name: Set installed version as fact
+  ansible.builtin.set_fact:
+    rke_version_installed: "{{ 'N/A' if rke_version_installed.stdout | length == 0 else rke_version_installed.stdout }}"
+
+- name: Get latest rke release info
+  ansible.builtin.uri:
+    url: "{{ rke_api + '/releases/latest' }}"
+  check_mode: no
+  register: rke_version_info
+
+- name: Get latest release tag
+  ansible.builtin.set_fact:
+    rke_version_latest: "{{ rke_version_info.json.tag_name }}"
+
+- name: Replace 'latest' by the actual version
+  ansible.builtin.set_fact:
+    rke_version: "{{ rke_version_latest }}"
+  when: rke_version == 'latest'
+
+- name: Get all rke releases info
+  ansible.builtin.uri:
+    url: "{{ rke_api + '/releases?per_page=1000' }}"
+  check_mode: no
+  register: rke_version_info
+
+- name: Get version information
+  ansible.builtin.set_fact:
+    rke_version_info: "{{ rke_version_info.json | json_query(query) | first }}"
+  vars:
+    query: "[?tag_name=='{{ rke_version }}']"
+
+- name: Construct filename based on the system & architecture
+  ansible.builtin.set_fact:
+    rke_file: "rke_{{ rke_system }}-{{ rke_architecture }}"
+
+- name: Show rke release
+  ansible.builtin.debug:
+    msg:
+      - "rke latest release    : {{ rke_version_latest }}"
+      - "rke requested release : {{ rke_version }}"
+      - "rke installed release : {{ rke_version_installed }}"
+
+- name: Install/update rke
+  when: rke_version != rke_version_installed
+  block:
+
+    - name: Create temporary directory
+      ansible.builtin.tempfile:
+        state: directory
+      changed_when: false
+      register: __tmpdir
+
+    - name: Get binary location
+      ansible.builtin.set_fact:
+        rke_url: "{{ rke_version_info.assets | json_query(query) | first }}"
+      vars:
+        query: "[?name=='{{ rke_file }}'].browser_download_url"
+
+    - name: Download binary
+      ansible.builtin.get_url:
+        url: "{{ rke_url }}"
+        dest: "{{ __tmpdir.path }}/"
+      changed_when: false
+
+    - name: Copy binary to {{ rke_path }}
+      ansible.builtin.copy:
+        src: "{{ __tmpdir.path }}/{{ rke_file }}"
+        dest: "{{ rke_path }}"
+        mode: "0555"
+        remote_src: true
+      become: yes
+
+    - name: Cleanup temporary directory
+      ansible.builtin.file:
+        path: "{{ __tmpdir.path }}"
+        state: absent
+      changed_when: false
