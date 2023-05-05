@@ -62,6 +62,9 @@ rke:
     Linux: linux
     Darwin: darwin
 
+# Construct filename based on the system & architecture
+rke_file: "rke_{{ rke_system }}-{{ rke_architecture }}"
+
 # Version of the CLI to install
 rke_version: latest
 
@@ -81,8 +84,6 @@ rke_mode: '0755'
 - name: sample playbook for role 'rke'
   hosts: all
   become: "yes"
-  roles:
-    - deitkrachten.showinfo
   tasks:
     - name: Include role 'rke'
       ansible.builtin.include_role:
