@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/de-it-krachten/ansible-role-rke/compare/v1.2.0...v1.3.0) (2024-12-29)
+
+
+### Features
+
+* Update supported platforms & CI ([5c66e27](https://github.com/de-it-krachten/ansible-role-rke/commit/5c66e2788d91d9ef1fde94705bd75cf84915bc42))
+
 # [1.2.0](https://github.com/de-it-krachten/ansible-role-rke/compare/v1.1.0...v1.2.0) (2024-06-04)
 
 
