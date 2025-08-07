@@ -43,9 +43,9 @@
 
 - name: Get version information
   ansible.builtin.set_fact:
-    rke_version_info: "{{ rke_version_info.json | json_query(query) | first }}"
+    rke_version_info: "{{ rke_version_info.json | json_query(qq) | first }}"
   vars:
-    query: "[?tag_name=='{{ rke_version }}']"
+    qq: "[?tag_name=='{{ rke_version }}']"
 
 - name: Show rke release
   ansible.builtin.debug:
@@ -66,9 +66,9 @@
 
     - name: Get binary location
       ansible.builtin.set_fact:
-        rke_url: "{{ rke_version_info.assets | json_query(query) | first }}"
+        rke_url: "{{ rke_version_info.assets | json_query(qq) | first }}"
       vars:
-        query: "[?name=='{{ rke_file }}'].browser_download_url"
+        qq: "[?name=='{{ rke_file }}'].browser_download_url"
 
     - name: Download binary
       ansible.builtin.get_url:
