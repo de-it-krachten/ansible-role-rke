@@ -1,3 +1,14 @@
+# [1.4.0](https://github.com/de-it-krachten/ansible-role-rke/compare/v1.3.0...v1.4.0) (2025-08-07)
+
+
+### Features
+
+* Add support for AlmaLinux 10 ([ec40c99](https://github.com/de-it-krachten/ansible-role-rke/commit/ec40c99fe4f8079f3c4ea3a785610679217b858d))
+* Add support for Debian 13 (Trixie) ([ed37dd8](https://github.com/de-it-krachten/ansible-role-rke/commit/ed37dd8795b49fd50b7e2ed460e1ead5a532c5e0))
+* Add support for OracleLinux 10 ([be9ce06](https://github.com/de-it-krachten/ansible-role-rke/commit/be9ce067cb7f5f67e361ad37a89cbe4b7d727d6c))
+* Add support for Red Hat Enterprise Linux 10 ([2476360](https://github.com/de-it-krachten/ansible-role-rke/commit/24763601f34ca41f4a0b41a3cd2d7d9de2280512))
+* Add support for RockyLinux 10 ([d1b7166](https://github.com/de-it-krachten/ansible-role-rke/commit/d1b71665a2c09d6b3c4c9c3d33ae9d6da7b69393))
+
 # [1.3.0](https://github.com/de-it-krachten/ansible-role-rke/compare/v1.2.0...v1.3.0) (2024-12-29)
 
 
