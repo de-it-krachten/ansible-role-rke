@@ -1,3 +1,13 @@
+# [1.5.0](https://github.com/de-it-krachten/ansible-role-rke/compare/v1.4.0...v1.5.0) (2026-03-15)
+
+
+### Features
+
+* Added support for Fedora 43 ([da89cf7](https://github.com/de-it-krachten/ansible-role-rke/commit/da89cf7dc4e3a93f7ccb98d328b45e6b44943cdd))
+* Drop support for Fedora 41 ([695dacf](https://github.com/de-it-krachten/ansible-role-rke/commit/695dacf8fbffcf78625d3ac7019f695f60260cd7))
+* Drop support for openSUSE Leap 15 ([8e53293](https://github.com/de-it-krachten/ansible-role-rke/commit/8e532932f7c991939b5538fa720ddcaf467f2357))
+* Drop support for SUSE Linux Enterprise 15 ([4647dab](https://github.com/de-it-krachten/ansible-role-rke/commit/4647dabc49fd7c95ca00fb2489b5d76cccf3224d))
+
 # [1.4.0](https://github.com/de-it-krachten/ansible-role-rke/compare/v1.3.0...v1.4.0) (2025-08-07)
 
 
