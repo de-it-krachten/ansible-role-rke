@@ -2,8 +2,8 @@
 
 - name: Lookup alternative system & architecture
   ansible.builtin.set_fact:
-    rke_system: "{{ rke['system'][ansible_system] }}"
-    rke_architecture: "{{ rke['architecture'][ansible_architecture] | default(ansible_architecture) }}"
+    rke_system: "{{ rke['system'][ansible_facts.system] }}"
+    rke_architecture: "{{ rke['architecture'][ansible_facts.architecture] | default(ansible_facts.architecture) }}"
 
 - name: Get rke version installed
   ansible.builtin.shell: |
