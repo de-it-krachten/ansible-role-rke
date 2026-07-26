@@ -1,3 +1,13 @@
+# [1.6.0](https://github.com/de-it-krachten/ansible-role-rke/compare/v1.5.0...v1.6.0) (2026-07-26)
+
+
+### Features
+
+* Add support for ansible-core 2.20+ ([c3eb590](https://github.com/de-it-krachten/ansible-role-rke/commit/c3eb5905f360cff28339932dd73368130161591f))
+* Added support for Fedora 44 ([8517e93](https://github.com/de-it-krachten/ansible-role-rke/commit/8517e93491fa45222fddeba1049a8d66d8af0c8d))
+* Added support for Ubuntu 26.04 LTS ([97ba05a](https://github.com/de-it-krachten/ansible-role-rke/commit/97ba05ae7178d3c1798b630b3f44ea9cc6d9d5b6))
+* Drop support for Fedora 42 ([a9d2ec9](https://github.com/de-it-krachten/ansible-role-rke/commit/a9d2ec945109983d5536880418019fe2c1be0ab0))
+
 # [1.5.0](https://github.com/de-it-krachten/ansible-role-rke/compare/v1.4.0...v1.5.0) (2026-03-15)
 
 
