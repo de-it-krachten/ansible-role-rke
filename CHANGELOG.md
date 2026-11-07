@@ -1,3 +1,10 @@
+# [1.7.0](https://github.com/de-it-krachten/ansible-role-rke/compare/v1.6.0...v1.7.0) (2026-11-07)
+
+
+### Features
+
+* Drop support for Debian 11 (Bullseye) ([57dd5b2](https://github.com/de-it-krachten/ansible-role-rke/commit/57dd5b2fb58de0ca56d9761e860b737df90e8c3b))
+
 # [1.6.0](https://github.com/de-it-krachten/ansible-role-rke/compare/v1.5.0...v1.6.0) (2026-07-26)
 
 
